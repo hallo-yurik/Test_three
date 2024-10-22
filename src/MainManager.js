@@ -1,5 +1,5 @@
 import {PerspectiveCamera, Scene, WebGLRenderer} from "three";
-import CubeScene from "./CubeScene";
+import WaveScene from "./WaveScene";
 
 export default class MainManager {
     scenes = [];
@@ -16,7 +16,7 @@ export default class MainManager {
     }
 
     initScene() {
-        this.scenes.push(new CubeScene());
+        this.scenes.push(new WaveScene());
     }
 
     getBaseProps() {
