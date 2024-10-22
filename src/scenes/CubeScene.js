@@ -1,4 +1,4 @@
-import {BoxGeometry, Color, DirectionalLight, Mesh, MeshStandardMaterial, Scene} from "three";
+import {BoxGeometry, DirectionalLight, Mesh, MeshStandardMaterial, Scene} from "three";
 import {mainManger} from "../index";
 
 export default class CubeScene {

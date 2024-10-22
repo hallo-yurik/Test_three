@@ -7,12 +7,9 @@ export default class Ui {
             const buttonElement = window.document.getElementById(`button_${i}`);
             buttonElement.addEventListener("click", () => this.bindEvent(i));
         }
-
-
     }
 
     bindEvent(sceneIndex) {
-        // console.log(sceneIndex);
         mainManger.initScene(sceneIndex);
     }
 }

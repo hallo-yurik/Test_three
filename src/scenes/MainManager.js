@@ -23,10 +23,7 @@ export default class MainManager {
     }
 
     initScene(sceneIndex) {
-        // console.log(this.currentScene.scene);
-        if (this.currentScene) {
-            this.scene.remove(this.currentScene.scene);
-        }
+        if (this.currentScene) this.scene.remove(this.currentScene.scene);
         this.currentScene = new this.scenes[sceneIndex]();
     }
 
