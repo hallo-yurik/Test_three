@@ -1,31 +1,28 @@
 import {
     Color,
     Mesh,
-    PlaneGeometry,
+    PlaneGeometry, Scene,
     ShaderMaterial,
     Vector3
 } from "three";
-import {mainManger} from "./index";
+import {mainManger} from "../index";
 
 export default class WaveScene {
     vTime = {value: 0};
 
     constructor() {
-        const {scene, camera} = mainManger.getBaseProps();
+        const {scene: mainScene} = mainManger.getBaseProps();
 
-        this.scene = scene;
-        this.camera = camera;
+        this.scene = new Scene();
 
         this.addWave();
-        this.addBackground();
+
+        mainScene.add(this.scene);
     }
 
     addWave() {
-        this.camera.position.z = 5;
-
         this.geometry = new PlaneGeometry(5, 5, 50, 50);
         this.geometry.computeVertexNormals();
-
 
         this.material = new ShaderMaterial({
             uniforms: {
@@ -80,11 +77,6 @@ export default class WaveScene {
         this.plane.rotation.x = -Math.PI / 180 * 75;
 
         this.scene.add(this.plane);
-    }
-
-    addBackground() {
-        const {scene} = mainManger.getBaseProps();
-        scene.background = new Color("#58a1a9");
     }
 
     update() {

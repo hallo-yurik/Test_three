@@ -1,4 +1,4 @@
-import MainManager from "./MainManager";
+import MainManager from "./scenes/MainManager";
 
 export const mainManger = new MainManager();
 
