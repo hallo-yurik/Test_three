@@ -2,9 +2,10 @@ import {Color, PerspectiveCamera, Scene, WebGLRenderer} from "three";
 import WaveScene from "./WaveScene";
 import Ui from "../ui/ui";
 import CubeScene from "./CubeScene";
+import DrawingScene from "./DrawingScene";
 
 export default class MainManager {
-    scenes = [CubeScene, WaveScene, WaveScene];
+    scenes = [CubeScene, WaveScene, DrawingScene];
     currentScene = null;
 
     constructor() {
@@ -25,6 +26,7 @@ export default class MainManager {
     initScene(sceneIndex) {
         if (this.currentScene) this.scene.remove(this.currentScene.scene);
         this.currentScene = new this.scenes[sceneIndex]();
+        // this.currentScene = new this.scenes[2]();
     }
 
     getBaseProps() {
