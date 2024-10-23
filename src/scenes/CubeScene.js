@@ -1,16 +1,12 @@
-import {BoxGeometry, Color, DirectionalLight, Mesh, MeshStandardMaterial, Scene} from "three";
-import {mainManger} from "../index";
+import {BoxGeometry, DirectionalLight, Mesh, MeshStandardMaterial} from "three";
+import BaseScene from "./BaseScene";
 
-export default class CubeScene {
+export default class CubeScene extends BaseScene {
     constructor() {
-        const {scene: mainScene} = mainManger.getBaseProps();
-
-        this.scene = new Scene();
+        super();
 
         this.addCube();
         this.addLight();
-
-        mainScene.add(this.scene);
     }
 
     addCube() {

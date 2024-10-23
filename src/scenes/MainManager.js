@@ -2,9 +2,10 @@ import {Color, PerspectiveCamera, Scene, WebGLRenderer} from "three";
 import WaveScene from "./WaveScene";
 import Ui from "../ui/ui";
 import CubeScene from "./CubeScene";
+import DrawingScene from "./DrawingScene";
 
 export default class MainManager {
-    scenes = [CubeScene, WaveScene, WaveScene];
+    scenes = [CubeScene, WaveScene, DrawingScene];
     currentScene = null;
 
     constructor() {
@@ -23,10 +24,7 @@ export default class MainManager {
     }
 
     initScene(sceneIndex) {
-        // console.log(this.currentScene.scene);
-        if (this.currentScene) {
-            this.scene.remove(this.currentScene.scene);
-        }
+        if (this.currentScene) this.scene.remove(this.currentScene.scene);
         this.currentScene = new this.scenes[sceneIndex]();
     }
 
@@ -39,7 +37,7 @@ export default class MainManager {
     }
 
     addBackground() {
-        this.scene.background = new Color("#58a1a9");
+        this.scene.background = new Color("#63b7c0");
     }
 
     update() {

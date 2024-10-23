@@ -1,23 +1,18 @@
 import {
     Color,
     Mesh,
-    PlaneGeometry, Scene,
+    PlaneGeometry,
     ShaderMaterial,
-    Vector3
 } from "three";
-import {mainManger} from "../index";
+import BaseScene from "./BaseScene";
 
-export default class WaveScene {
+export default class WaveScene extends BaseScene {
     vTime = {value: 0};
 
     constructor() {
-        const {scene: mainScene} = mainManger.getBaseProps();
-
-        this.scene = new Scene();
+        super();
 
         this.addWave();
-
-        mainScene.add(this.scene);
     }
 
     addWave() {
@@ -27,20 +22,17 @@ export default class WaveScene {
         this.material = new ShaderMaterial({
             uniforms: {
                 time: this.vTime,
-                color: {value: new Color("red")},
-                light: {value: new Vector3(0, 1, 0)},
+                color: {value: new Color("#a2e590")}
             },
             vertexShader: `
                 #define PI 3.1415926
                 #define PI2 PI*2.
                 
                 uniform float time;
-                // attribute vec3 normal;
                 varying vec3 vNormal;
                 
                 void main(){
                     vec3 pos = position;
-                    // vNormal = normal;
                     
                     float x = (length(uv - 0.5) - time) * 3. * PI2;
                     pos.z = sin(x) * 0.2;
@@ -63,17 +55,15 @@ export default class WaveScene {
 
                     float dProd = max(0.0, dot(vNormal, light));
                     dProd += 0.5;
+                    vec3 finalColor = color; 
+                    finalColor *= dProd;
                 
-                    gl_FragColor = vec4(dProd, // R
-                                        dProd, // G
-                                        dProd, // B
-                                        1.0);  // A
+                    gl_FragColor = vec4(finalColor, 1.0);
                 }
             `
         });
 
         this.plane = new Mesh(this.geometry, this.material);
-
         this.plane.rotation.x = -Math.PI / 180 * 75;
 
         this.scene.add(this.plane);
