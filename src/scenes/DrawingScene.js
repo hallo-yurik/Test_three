@@ -32,7 +32,7 @@ export default class DrawingScene extends BaseScene {
         this.onMouseUpEvent = this.onMouseUp.bind(this);
 
         this.geometry = new BufferGeometry();
-        this.material = new MeshBasicMaterial({color: "#d39d73"});
+        this.material = new MeshBasicMaterial({color: "#eae044"});
         this.boxGeometry = new BoxGeometry(2, 1, 0.1);
         this.boxMaterial = new MeshBasicMaterial({color: "#ffffff"});
 

@@ -29,12 +29,10 @@ export default class WaveScene extends BaseScene {
                 #define PI2 PI*2.
                 
                 uniform float time;
-                // attribute vec3 normal;
                 varying vec3 vNormal;
                 
                 void main(){
                     vec3 pos = position;
-                    // vNormal = normal;
                     
                     float x = (length(uv - 0.5) - time) * 3. * PI2;
                     pos.z = sin(x) * 0.2;
@@ -58,8 +56,7 @@ export default class WaveScene extends BaseScene {
                     float dProd = max(0.0, dot(vNormal, light));
                     dProd += 0.5;
                     vec3 finalColor = color; 
-                    finalColor *= dProd; 
-                    // color *= dProd;
+                    finalColor *= dProd;
                 
                     gl_FragColor = vec4(finalColor, 1.0);
                 }

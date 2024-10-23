@@ -26,7 +26,6 @@ export default class MainManager {
     initScene(sceneIndex) {
         if (this.currentScene) this.scene.remove(this.currentScene.scene);
         this.currentScene = new this.scenes[sceneIndex]();
-        // this.currentScene = new this.scenes[2]();
     }
 
     getBaseProps() {
@@ -38,7 +37,7 @@ export default class MainManager {
     }
 
     addBackground() {
-        this.scene.background = new Color("#58a1a9");
+        this.scene.background = new Color("#63b7c0");
     }
 
     update() {
